@@ -1,0 +1,47 @@
+version: '3'
+
+volumes:
+  postgres-db:
+
+services:
+  db:
+    image: postgres:9.4
+    container_name: flask-db
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fscafold
+    restart: always
+  flask:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: flask
+    container_name: flask
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./flask-scaffold:/app
+    environment:
+      PG_DB_USERNAME: postgres
+      PG_DB_PASSWORD: postgres
+      PG_DB_NAME: fscafold
+      PG_DB_HOSTNAME: db
+    command: /sbin/init
+    privileged: true
+    restart: always
+  phpPgAdmin:
+    container_name: phppgadmin
+    image: zhajor/docker-phppgadmin
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432 
+    ports:
+      - 12345:80
+    restart: always
