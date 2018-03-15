@@ -11,7 +11,6 @@ RUN apt-get install -y \
     build-essential \ 
     python3-dev
 
-
 # Install Miniconda
 RUN curl -LO http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN bash Miniconda3-latest-Linux-x86_64.sh -p /miniconda -b
@@ -21,8 +20,10 @@ RUN conda update -y conda
 RUN pip install --upgrade pip
 
 # Install Jupyter
-RUN conda install jupyter
-
+# RUN conda install jupyter
+# RUN mkdir /notebook/
+# RUN jupyter notebook --generate-config
+# COPY init/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 # install requirement for flask
 RUN mkdir -p /app
@@ -31,6 +32,6 @@ WORKDIR /app
 ADD ./flask-scaffold/requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+EXPOSE 5000 8080
 
 CMD [ "python", "run.py" ]

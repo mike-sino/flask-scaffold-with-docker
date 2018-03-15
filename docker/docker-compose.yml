@@ -24,8 +24,9 @@ services:
       - db
     ports:
       - "5000:5000"
+      - "8080:8080"
     volumes:
-      - ./flask-scaffold:/app
+      - ../flask-scaffold:/app
     environment:
       PG_DB_USERNAME: postgres
       PG_DB_PASSWORD: postgres
