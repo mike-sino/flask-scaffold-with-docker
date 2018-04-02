@@ -30,10 +30,10 @@ docker exec -it flask bash
 Step 3. prepare the scaffold and database
 
 ```
-python scaffold.py scaffold/blog.yaml
-python db.py db init
-python db.py db migrate
-python db.py db upgrade
+/miniconda/bin/python scaffold.py scaffold/blog.yaml
+/miniconda/bin/python db.py db init
+/miniconda/bin/python db.py db migrate
+/miniconda/bin/python db.py db upgrade
 ```
 
 Step 4. close container
@@ -58,11 +58,11 @@ docker-compose down
 
 # The useage of flask scffold
 
-flask: http://localhost:5000
+flask: http://localhost:80
 
-phppgadmin: http://localhost:12345
+phppgadmin: http://localhost:8000
 
-
+supervisor: http://localhost:9001
 
 # Python and Jupyter notebook
 
