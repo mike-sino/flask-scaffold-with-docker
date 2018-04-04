@@ -2,7 +2,7 @@ import os
 
 # flask 
 DEBUG = True
-PORT = 80
+PORT = 5000
 HOST = "0.0.0.0"
 SQLALCHEMY_ECHO = False
 SECRET_KEY = "SOME SECRET"

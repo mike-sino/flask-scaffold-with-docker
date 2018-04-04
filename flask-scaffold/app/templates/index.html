@@ -23,7 +23,10 @@
 
     <script type="text/javascript" src="static/js/app.js"></script>
     <script type="text/javascript" src="static/js/login.js"></script>
-                        <!-- Controllers -->
+                           <!-- Controllers -->
+    <script type="text/javascript" src="authors/controllers.js"></script>
+    <script type="text/javascript" src="comments/controllers.js"></script>
+    <script type="text/javascript" src="posts/controllers.js"></script>
     <script type="text/javascript" src="users/controllers.js"></script>
     <script type="text/javascript" src="roles/controllers.js"></script>
     <script type="text/javascript" src="users/controllers.js"></script>
@@ -69,7 +72,10 @@
           <li class="active"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
           <li><a ui-sref="roles.list">Roles</a></li>
           <li><a ui-sref="users.list">Users</a></li>
-                          <!-- menu -->
+                                <!-- menu -->
+             <li><a ui-sref="authors.list" id="authors_menu" >Authors</a></li>
+             <li><a ui-sref="comments.list" id="comments_menu" >Comments</a></li>
+             <li><a ui-sref="posts.list" id="posts_menu" >Posts</a></li>
 
 
         </ul>
