@@ -1,22 +1,25 @@
 import os
 
+# flask 
+DEBUG = True
+PORT = 80
+HOST = "0.0.0.0"
+SQLALCHEMY_ECHO = False
+SECRET_KEY = "SOME SECRET"
+
 # DATABASE SETTINGS
 pg_db_username = os.environ.get('PG_DB_USERNAME', 'postgres')
 pg_db_password = os.environ.get('PG_DB_PASSWORD', 'postgres')
 pg_db_name = os.environ.get('PG_DB_NAME', 'fscafold')
-pg_db_hostname = os.environ.get('PG_DB_HOSTNAME', 'localhost')
+pg_db_hostname = os.environ.get('PG_DB_HOSTNAME', 'db')
+
 
 # MYSQL
-mysql_db_username = 'root'
-mysql_db_password = ''
-mysql_db_name = 'fscaffold'
-mysql_db_hostname = 'localhost'
+# mysql_db_username = 'root'
+# mysql_db_password = ''
+# mysql_db_name = 'fscaffold'
+# mysql_db_hostname = 'localhost'
 
-DEBUG = True
-PORT = 5000
-HOST = "0.0.0.0"
-SQLALCHEMY_ECHO = False
-SECRET_KEY = "SOME SECRET"
 # PostgreSQL
 SQLALCHEMY_DATABASE_URI = "postgresql://{DB_USER}:{DB_PASS}@{DB_ADDR}/{DB_NAME}".format(DB_USER=pg_db_username,
                                                                                         DB_PASS=pg_db_password,
@@ -28,6 +31,7 @@ SQLALCHEMY_DATABASE_URI = "postgresql://{DB_USER}:{DB_PASS}@{DB_ADDR}/{DB_NAME}"
                                                                                         DB_PASS=mysql_db_password,
                                                                                         DB_ADDR=mysql_db_hostname,
                                                                                         DB_NAME=mysql_db_name)"""
+
 # Email Server Configuration
 
 MAIL_DEFAULT_SENDER = "leo@localhost"

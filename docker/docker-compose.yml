@@ -9,6 +9,7 @@ services:
     container_name: flask-db
     volumes:
       - postgres-db:/var/lib/postgresql/data
+      - ./init/tools_config/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -20,29 +21,31 @@ services:
       dockerfile: Dockerfile
     image: flask
     container_name: flask
-    depends_on:
+    links:
       - db
     ports:
-      - "5000:5000"
+      - "5000:80"
       - "8080:8080"
+      - "9001:9001"
     volumes:
       - ../flask-scaffold:/app
+      - ./init/tools_config/supervisord.conf:/etc/supervisor/supervisord.conf
+      - ../supervisor:/etc/supervisor/conf.d
     environment:
       PG_DB_USERNAME: postgres
       PG_DB_PASSWORD: postgres
       PG_DB_NAME: fscafold
       PG_DB_HOSTNAME: db
-    command: /sbin/init
     privileged: true
     restart: always
   phpPgAdmin:
     container_name: phppgadmin
     image: zhajor/docker-phppgadmin
-    depends_on:
+    links:
       - db
     environment:
       DB_HOST: db
       DB_PORT: 5432 
     ports:
-      - 12345:80
+      - 8000:80
     restart: always

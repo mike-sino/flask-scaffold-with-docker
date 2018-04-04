@@ -1,0 +1,13 @@
+[Unit]
+Description=Jupyter notebook
+After=network.target
+
+[Service]
+ExecStart=/miniconda/bin/jupyter-notebook
+KillMode=process
+RestartSec=42s
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
