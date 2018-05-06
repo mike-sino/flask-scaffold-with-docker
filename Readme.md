@@ -4,7 +4,7 @@ This project is based on Flask-Scaffold and a ubuntu docker envrionment is provi
 
 ## Base Docker Image
 
-* [ubuntu:10:04](https://registry.hub.docker.com/u/library/ubuntu/)
+* [ubuntu:16.04](https://registry.hub.docker.com/u/library/ubuntu/)
 
 ## Base project
 
